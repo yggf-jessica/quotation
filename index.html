@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="skel/css/styles.css">
 
 <head>
   <meta charset="UTF-8">
   <title>Accessory Shop Quotation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -15,9 +19,7 @@
     <div class="row">
       <div class="col-sm-3">
         <h2 class="jess-title">JESS JESS CLUB</h2>
-
         <p>
-            <br>
           Tonson APT.<br>
           BangBo.<br>
           Samutrprakarn<br>
@@ -29,9 +31,8 @@
       </div>
       <div class="col-sm-6"></div>
       <div class="col-sm-3 text-center">
-        <h2>QUOTATION </h2>
-        <img src="img/Jessica.png" style="width:100px;height:100px;">
-        
+        <h2>QUOTATION</h2>
+        <img src="img/Jessica.png" alt="logo" style="width:100px;height:100px;">
       </div>
     </div>
 
@@ -55,8 +56,8 @@
       </div>
     </div>
 
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Item</button> -->
     <button type="button" class="btn" style="margin:10px 0; background-color:cyan; color:black; border:none;" data-toggle="modal" data-target="#exampleModal">Add Item</button>
+
     <table class="table table-striped table-bordered table-condensed" id="quotationTable">
       <thead>
         <tr>
@@ -114,9 +115,9 @@
                 <select id="newItemDescription" class="form-control" onchange="updatePriceByProduct()">
                   <option value="" disabled selected>Select product</option>
                   <option value="Headsets" data-price="5000">Headsets</option>
-<option value="Marshall Action 3" data-price="13000">Marshall Action 3</option>
-<option value="In-ear monitor" data-price="7500">In-ear monitor</option>
-<option value="HDMI Cable" data-price="700">HDMI Cable</option>
+                  <option value="Marshall Action 3" data-price="13000">Marshall Action 3</option>
+                  <option value="In-ear monitor" data-price="7500">In-ear monitor</option>
+                  <option value="HDMI Cable" data-price="700">HDMI Cable</option>
                 </select>
               </td>
             </tr>
@@ -154,9 +155,7 @@
       const description = $("#newItemDescription").val();
       const unitPrice = parseFloat($("#newItemPPU").val());
       const quantity = parseFloat($("#newItemQty").val());
-
       if (!description || isNaN(unitPrice) || isNaN(quantity)) return alert("Please fill all fields correctly");
-
       quoationData.push({ description, unitPrice, quantity });
       $('#exampleModal').modal('hide');
       renderTable();
@@ -170,7 +169,6 @@
     function renderTable() {
       let subTotal = 0;
       $(".data-row").remove();
-
       quoationData.forEach((item, i) => {
         const amount = item.quantity * item.unitPrice;
         subTotal += amount;
@@ -195,12 +193,11 @@
       const d = new Date();
       $('#quotationDate').text(d.toDateString());
     });
-  </script>
-  <script>
+
     $('#exampleModal').on('show.bs.modal', function () {
-      $('#newItemDescription').val('');  // Reset dropdown
-      $('#newItemPPU').val('');          // Clear unit price
-      $('#newItemQty').val('');          // Clear quantity
+      $('#newItemDescription').val('');
+      $('#newItemPPU').val('');
+      $('#newItemQty').val('');
     });
   </script>
 </body>
